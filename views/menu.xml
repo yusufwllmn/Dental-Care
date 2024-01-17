@@ -1,16 +1,65 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
+        <!-- Menu Root -->
         <menuitem 
             id="dental_menu_root" 
             name="Dental Care" 
             sequence="20"/>
-        
+
+        <!-- Menu Doctors -->
         <menuitem 
-            id="dental_menu_data" 
-            name="Data Records" 
+            id="dental_menu_doctor" 
+            name="Doctors" 
+            action="action_doctor" 
             parent="dental_menu_root" 
+            sequence="20"/>
+
+        <!-- Menu Patients -->
+        <menuitem 
+            id="dental_menu_patient" 
+            name="Patients" 
+            action="action_patient" 
+            parent="dental_menu_root" 
+            sequence="20"/>
+
+        <!-- Menu Appointments -->
+        <menuitem 
+            id="dental_menu_appointment" 
+            name="Appointments" 
+            action="action_appointment" 
+            parent="dental_menu_root" 
+            sequence="20"/>
+        
+        <!-- Menu configuration -->
+        <menuitem 
+            id="dental_menu_configuration" 
+            name="Configuration" 
+            parent="dental_menu_root" 
+            sequence="20"/>
+
+        <!-- Sub-menu configuration Services-->
+        <menuitem 
+            id="dental_menu_service" 
+            name="Services" 
+            action="action_service" 
+            parent="dental_menu_configuration" 
+            sequence="20"/>
+            
+        <!-- Sub-menu configuration Doctors Stages -->
+        <menuitem 
+            id="dental_menu_doctor_stage" 
+            name="Doctors Stages" 
+            action="action_service" 
+            parent="dental_menu_configuration" 
+            sequence="20"/>
+
+        <!-- Sub-menu configuration Patients Stages -->
+        <menuitem 
+            id="dental_menu_patient_stage" 
+            name="Patients Stages" 
+            action="action_service" 
+            parent="dental_menu_configuration" 
             sequence="20"/>
 
     </data>

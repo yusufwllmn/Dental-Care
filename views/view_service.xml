@@ -35,12 +35,5 @@
             <field name="res_model">dental.service</field>
             <field name="view_mode">tree,form</field>
         </record>
-
-        <menuitem 
-            id="dental_menu_service" 
-            name="Service" 
-            action="action_service" 
-            parent="dental_menu_data" 
-            sequence="20"/>
     </data>
 </odoo>

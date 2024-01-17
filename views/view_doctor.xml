@@ -33,12 +33,5 @@
             <field name="res_model">dental.doctor</field>
             <field name="view_mode">tree,form</field>
         </record>
-
-        <menuitem 
-            id="dental_menu_doctor" 
-            name="Doctor" 
-            action="action_doctor" 
-            parent="dental_menu_data" 
-            sequence="20"/>
     </data>
 </odoo>
