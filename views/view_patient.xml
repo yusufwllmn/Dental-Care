@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_dental_patient_form" model="ir.ui.view">
+            <field name="name">dental.patient.form</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="patient"></field>
+                            <field name="doctor"></field>
+                            <field name="service"></field>
+                            <field name="emergency_number"></field>
+                            <field name="date_of_birth"></field>
+                            <field name="blood_type"></field>
+                            <field name="height"></field>
+                            <field name="weight"></field>
+                            <field name="is_vaccinated"></field>
+                            <field name="vaccine_name"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_dental_patient_tree" model="ir.ui.view">
+            <field name="name">dental.patient.tree</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient"></field>
+                    <field name="doctor"></field>
+                    <field name="service"></field>
+                    <field name="emergency_number"></field>
+                    <field name="date_of_birth"></field>
+                    <field name="blood_type"></field>
+                    <field name="height"></field>
+                    <field name="weight"></field>
+                    <field name="is_vaccinated"></field>
+                    <field name="vaccine_name"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_patient" model="ir.actions.act_window">
+            <field name="name">patient</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dental.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="dental_menu_patient" 
+            name="Patient" 
+            action="action_patient" 
+            parent="dental_menu_data" 
+            sequence="20"/>
+    </data>
+</odoo>

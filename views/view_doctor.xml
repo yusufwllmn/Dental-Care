@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_dental_doctor_form" model="ir.ui.view">
+            <field name="name">dental.doctor.form</field>
+            <field name="model">dental.doctor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="doctor"></field>
+                            <field name="service_id"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_dental_doctor_tree" model="ir.ui.view">
+            <field name="name">dental.doctor.tree</field>
+            <field name="model">dental.doctor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="doctor"></field>
+                    <field name="service_id"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_doctor" model="ir.actions.act_window">
+            <field name="name">doctor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dental.doctor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="dental_menu_doctor" 
+            name="Doctor" 
+            action="action_doctor" 
+            parent="dental_menu_data" 
+            sequence="20"/>
+    </data>
+</odoo>

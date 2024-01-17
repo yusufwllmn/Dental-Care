@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <menuitem 
+            id="dental_menu_root" 
+            name="Dental Care" 
+            sequence="20"/>
+        
+        <menuitem 
+            id="dental_menu_data" 
+            name="Data Records" 
+            parent="dental_menu_root" 
+            sequence="20"/>
+
+    </data>
+    
+</odoo>
