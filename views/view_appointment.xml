@@ -7,15 +7,40 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <h1><field name="patient"></field></h1>
                         <group>
-                            <field name="patient"></field>
                             <field name="doctor"></field>
+                            <field name="patient"></field>
                             <field name="service"></field>
-                            <field name="date_start"></field>
-                            <field name="date_end"></field>
                         </group>
+                        <notebook>
+                            <page string="Schedulling">
+                                <group>
+                                    <field name="date_start"></field>
+                                    <field name="date_end"></field>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record id="view_dental_appointment_search" model="ir.ui.view">
+            <field name="name">dental.appointment.search</field>
+            <field name="model">dental.appointment</field>
+            <field name="arch" type="xml">
+                <search string="Search Doctor">
+                    <field name="doctor"></field>
+                    <field name="patient"></field>
+                    <field name="service"></field>
+                    <field name="date_start"></field>
+                    <field name="date_end"></field>
+                    <group string="Group By">
+                        <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
+                        <filter name="service" string="Service" context="{'group_by': 'service'}" />
+                    </group>
+                </search>
             </field>
         </record>
 

@@ -7,12 +7,27 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <h1><field name="doctor"></field></h1>
                         <group>
                             <field name="doctor"></field>
                             <field name="service_id"></field>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record id="view_dental_doctor_search" model="ir.ui.view">
+            <field name="name">dental.doctor.search</field>
+            <field name="model">dental.doctor</field>
+            <field name="arch" type="xml">
+                <search string="Search Doctor">
+                    <field name="doctor"></field>
+                    <field name="service_id"></field>
+                    <group string="Group By">
+                        <filter name="service_id" string="Service" context="{'group_by': 'service_id'}" />
+                    </group>
+                </search>
             </field>
         </record>
 

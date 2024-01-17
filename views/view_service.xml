@@ -7,13 +7,28 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <h1><field name="name"></field></h1>
                         <group>
-                            <field name="name"></field>
                             <field name="floor"></field>
                             <field name="room"></field>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record id="view_dental_service_search" model="ir.ui.view">
+            <field name="name">dental.service.search</field>
+            <field name="model">dental.service</field>
+            <field name="arch" type="xml">
+                <search string="Search Service">
+                    <field name="name"/>
+                    <field name="floor"/>
+                    <field name="room"/>
+                    <group string="Group By">
+                        <filter name="floor" string="Floor" context="{'group_by': 'floor'}" />
+                    </group>
+                </search>
             </field>
         </record>
 
