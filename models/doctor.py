@@ -16,3 +16,8 @@ class DentalDoctor(models.Model):
         'dental.service', 
         string='Service'
     )
+    
+    image = fields.Binary(
+        string='Foto',
+        attachment=True                      
+    )

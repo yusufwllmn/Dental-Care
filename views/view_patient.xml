@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                    <field name="image" widget="image" class="oe_avatar"></field>
                         <h1><field name="patient"></field></h1>
                         <group>
                             <group string="PATIENT INFORMATION">
@@ -77,7 +78,8 @@
             <field name="name">dental.patient.tree</field>
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree string="List View">
+                    <field name="image" widget="image" options="{'size': ['50', '50'],}"></field>
                     <field name="patient"></field>
                     <field name="doctor"></field>
                     <field name="service"></field>
@@ -89,6 +91,38 @@
                     <field name="is_vaccinated"></field>
                     <field name="vaccine_name"></field>
                 </tree>
+            </field>
+        </record>
+
+        <record id="view_dental_patient_kanban" model="ir.ui.view">
+            <field name="name">dental.patient.kanban</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <kanban string="Kanban View">
+                    <field name="patient"></field>
+                    <field name="doctor"></field>
+                    <field name="service"></field>
+                    <template>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <field name="image" widget="image"></field>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <div>
+                                        <strong><field name="patient"></field></strong>
+                                    </div>
+                                    <div>
+                                        <field name="doctor"></field>
+                                    </div>
+                                    <div>
+                                        <field name="service"></field>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </template>
+                </kanban>
             </field>
         </record>
 

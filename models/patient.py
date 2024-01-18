@@ -28,6 +28,11 @@ class DentalPatient(models.Model):
         readonly=True
     )
     
+    image = fields.Binary(
+        string='Foto',
+        attachment=True                      
+    )
+    
     date_of_birth = fields.Date(
         string='Date of Birth'
     )
