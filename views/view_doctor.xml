@@ -26,7 +26,6 @@
             <field name="arch" type="xml">
                 <search string="Search Doctor">
                     <field name="doctor"></field>
-                    <field name="service_id"></field>
                     <group string="Group By">
                         <filter name="service_id" string="Service" context="{'group_by': 'service_id'}" />
                     </group>

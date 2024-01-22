@@ -23,10 +23,9 @@
             <field name="arch" type="xml">
                 <search string="Search Service">
                     <field name="name"/>
-                    <field name="floor"/>
-                    <field name="room"/>
                     <group string="Group By">
                         <filter name="floor" string="Floor" context="{'group_by': 'floor'}" />
+                        <filter name="room" string="Room" context="{'group_by': 'room'}" />
                     </group>
                 </search>
             </field>

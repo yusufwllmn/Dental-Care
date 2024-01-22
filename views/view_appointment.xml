@@ -12,7 +12,7 @@
                             <field name="doctor"></field>
                             <field name="patient"></field>
                             <field name="service"></field>
-                        </group>
+                        </group> 
                         <notebook>
                             <page string="Schedulling">
                                 <group>
@@ -34,12 +34,9 @@
                     <field name="doctor"></field>
                     <field name="patient"></field>
                     <field name="service"></field>
-                    <field name="date_start"></field>
-                    <field name="date_end"></field>
-                    <group string="Group By">
-                        <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
-                        <filter name="service" string="Service" context="{'group_by': 'service'}" />
-                    </group>
+                    <filter name="date_start" string="Today" domain="[('date_start', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_start', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
+                    <separator/>
+                    <filter name="date_end" string="Today End Date" domain="[('date_end', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_end', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
                 </search>
             </field>
         </record>
