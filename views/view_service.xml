@@ -44,7 +44,7 @@
         </record>
 
         <record id="action_service" model="ir.actions.act_window">
-            <field name="name">service</field>
+            <field name="name">Services</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dental.service</field>
             <field name="view_mode">tree,form</field>

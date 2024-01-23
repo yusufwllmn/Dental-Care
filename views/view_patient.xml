@@ -6,12 +6,15 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"></field>
+                    </header>
                     <sheet>
-                    <field name="image" widget="image" class="oe_avatar"></field>
-                        <h1><field name="patient"></field></h1>
+                        <field name="image" widget="image" class="oe_avatar"></field>
+                        <h1><field name="name"></field></h1>
                         <group>
                             <group string="PATIENT INFORMATION">
-                                <field name="patient"></field>
+                                <field name="name"></field>
                                 <field name="emergency_number"></field>
                             </group>
                             <group string="HOSPITAL INFORMATION">
@@ -53,7 +56,7 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <search string="Search Patient">
-                    <field name="patient"></field>
+                    <field name="name"></field>
                     <group string="Group By">
                         <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
                         <filter name="service" string="service" context="{'group_by': 'service'}" />
@@ -68,8 +71,8 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <tree string="List View">
-                    <field name="image" widget="image" options="{'size': ['50', '50'],}"></field>
-                    <field name="patient"></field>
+                    <field name="image" widget="image" options="{'size': [50, 50]}"></field>
+                    <field name="name"></field>
                     <field name="doctor"></field>
                     <field name="service"></field>
                     <field name="emergency_number"></field>
@@ -87,8 +90,8 @@
             <field name="name">dental.patient.kanban</field>
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
-                <kanban string="Kanban View">
-                    <field name="patient"></field>
+                <kanban string="Kanban View" default_group_by="state" on_create="quick_create" quick_create_view="dental.patient.view_dental_patient_form">
+                    <field name="name"></field>
                     <field name="doctor"></field>
                     <field name="service"></field>
                     <template>
@@ -99,7 +102,7 @@
                                 </div>
                                 <div class="oe_kanban_details">
                                     <div>
-                                        <strong><field name="patient"></field></strong>
+                                        <strong><field name="name"></field></strong>
                                     </div>
                                     <div>
                                         <field name="doctor"></field>
@@ -107,6 +110,7 @@
                                     <div>
                                         <field name="service"></field>
                                     </div>
+                                    <progressbar field="state" colors='{"done": "success", "in_progress": "warning", "new": "danger"}' />
                                 </div>
                             </div>
                         </t>
@@ -116,10 +120,10 @@
         </record>
 
         <record id="action_patient" model="ir.actions.act_window">
-            <field name="name">patient</field>
+            <field name="name">Patients</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dental.patient</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
         </record>
     </data>
 </odoo>

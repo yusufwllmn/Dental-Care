@@ -6,7 +6,7 @@ class DentalAppointment(models.Model):
     _name = 'dental.appointment'
     _description = 'Dental Appointment Records'
 
-    patient = fields.Many2one(
+    name = fields.Many2one(
         'res.partner', 
         string='Patient', 
         required=True

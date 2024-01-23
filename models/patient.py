@@ -6,7 +6,7 @@ class DentalPatient(models.Model):
     _name = 'dental.patient'
     _description = 'Dental Patient Records'
 
-    patient = fields.Many2one(
+    name = fields.Many2one(
         'res.partner', 
         string='Patient', 
         required=True
@@ -23,7 +23,7 @@ class DentalPatient(models.Model):
     )
     
     emergency_number = fields.Char(
-        related='patient.phone', 
+        related='name.phone', 
         string='Emergency Number', 
         readonly=True
     )
@@ -33,17 +33,28 @@ class DentalPatient(models.Model):
         attachment=True                      
     )
     
+    state = fields.Selection(
+        string='State', 
+        selection=[
+            ('new', 'New'), 
+            ('in_progress', 'In Progress'),
+            ('done', 'Done')
+        ],
+        default='new'
+    )
+    
     date_of_birth = fields.Date(
         string='Date of Birth'
     )
     
-    blood_type = fields.Selection([
-        ('A', 'A'),
-        ('B', 'B'),
-        ('AB', 'AB'),
-        ('O', 'O'),
-    ], 
-        string='Blood Type'
+    blood_type = fields.Selection(
+        string='Blood Type',
+        selection=[
+            ('A', 'A'),
+            ('B', 'B'),
+            ('AB', 'AB'),
+            ('O', 'O')
+        ]
     )
     
     height = fields.Float(

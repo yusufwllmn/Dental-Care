@@ -7,10 +7,10 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <h1><field name="patient"></field></h1>
+                        <h1><field name="name"></field></h1>
                         <group>
                             <field name="doctor"></field>
-                            <field name="patient"></field>
+                            <field name="name"></field>
                             <field name="service"></field>
                         </group> 
                         <notebook>
@@ -30,9 +30,9 @@
             <field name="name">dental.appointment.search</field>
             <field name="model">dental.appointment</field>
             <field name="arch" type="xml">
-                <search string="Search Doctor">
+                <search string="Search Appointment">
                     <field name="doctor"></field>
-                    <field name="patient"></field>
+                    <field name="name"></field>
                     <field name="service"></field>
                     <filter name="date_start" string="Today" domain="[('date_start', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_start', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
                     <separator/>
@@ -46,7 +46,7 @@
             <field name="model">dental.appointment</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="patient"></field>
+                    <field name="name"></field>
                     <field name="doctor"></field>
                     <field name="service"></field>
                     <field name="date_start"></field>
@@ -55,11 +55,23 @@
             </field>
         </record>
 
+        <record id="view_dental_appointment_calendar" model="ir.ui.view">
+            <field name="name">dental.appointment.calendar</field>
+            <field name="model">dental.appointment</field>
+            <field name="arch" type="xml">
+                <calendar string="Appointments" date_start="date_start" date_stop="date_end" mode="month" quick_create="0" color="name" event_open_popup="true" event_limit="5">
+                    <field name="name"></field>
+                    <field name="doctor"></field>
+                    <field name="service"></field>
+                </calendar>
+            </field>
+        </record>
+
         <record id="action_appointment" model="ir.actions.act_window">
-            <field name="name">appointment</field>
+            <field name="name">Appointments</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dental.appointment</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
         </record>
     </data>
 </odoo>
