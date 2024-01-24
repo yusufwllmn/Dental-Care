@@ -11,16 +11,10 @@
                     </header>
                     <sheet>
                         <field name="image" widget="image" class="oe_avatar"></field>
-                        <h1><field name="name"></field></h1>
-                        <group>
-                            <group string="PATIENT INFORMATION">
-                                <field name="name"></field>
-                                <field name="emergency_number"></field>
-                            </group>
-                            <group string="HOSPITAL INFORMATION">
-                                <field name="doctor"></field>
-                                <field name="service"></field>
-                            </group>
+                        <h1><field name="patient"></field></h1>
+                        <group string="PATIENT INFORMATION">
+                            <field name="patient"></field>
+                            <field name="emergency_number"></field>
                         </group>
                         <notebook>
                             <page string="Patient History">
@@ -56,10 +50,8 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <search string="Search Patient">
-                    <field name="name"></field>
+                    <field name="patient"></field>
                     <group string="Group By">
-                        <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
-                        <filter name="service" string="service" context="{'group_by': 'service'}" />
                         <filter name="blood_type" string="Blood Type" context="{'group_by': 'blood_type'}" />
                     </group>
                 </search>
@@ -72,9 +64,7 @@
             <field name="arch" type="xml">
                 <tree string="List View">
                     <field name="image" widget="image" options="{'size': [50, 50]}"></field>
-                    <field name="name"></field>
-                    <field name="doctor"></field>
-                    <field name="service"></field>
+                    <field name="patient"></field>
                     <field name="emergency_number"></field>
                     <field name="date_of_birth"></field>
                     <field name="blood_type"></field>
@@ -90,27 +80,26 @@
             <field name="name">dental.patient.kanban</field>
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
-                <kanban string="Kanban View" default_group_by="state" on_create="quick_create" quick_create_view="dental.patient.view_dental_patient_form">
-                    <field name="name"></field>
-                    <field name="doctor"></field>
-                    <field name="service"></field>
+                <kanban string="Kanban View">
+                    <field name="patient"></field>
+                    <field name="emergency_number"></field>
+                    <field name="blood_type"></field>
                     <template>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
                                 <div class="o_kanban_image">
-                                    <field name="image" widget="image"></field>
+                                    <field name="image" widget="image"/>
                                 </div>
                                 <div class="oe_kanban_details">
                                     <div>
-                                        <strong><field name="name"></field></strong>
+                                        <strong><field name="patient"></field></strong>
                                     </div>
                                     <div>
-                                        <field name="doctor"></field>
+                                        <field name="emergency_number"></field>
                                     </div>
                                     <div>
-                                        <field name="service"></field>
+                                        <field name="blood_type"></field>
                                     </div>
-                                    <progressbar field="state" colors='{"done": "success", "in_progress": "warning", "new": "danger"}' />
                                 </div>
                             </div>
                         </t>

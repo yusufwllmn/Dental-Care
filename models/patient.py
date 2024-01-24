@@ -12,35 +12,15 @@ class DentalPatient(models.Model):
         required=True
     )
     
-    doctor = fields.Many2one(
-        'res.partner', 
-        string='Doctor'
-    )
-    
-    service = fields.Many2one(
-        'dental.service', 
-        string='Service'
-    )
-    
     emergency_number = fields.Char(
         related='name.phone', 
         string='Emergency Number', 
         readonly=True
     )
     
-    image = fields.Binary(
+    image = fields.Image(
         string='Foto',
         attachment=True                      
-    )
-    
-    state = fields.Selection(
-        string='State', 
-        selection=[
-            ('new', 'New'), 
-            ('in_progress', 'In Progress'),
-            ('done', 'Done')
-        ],
-        default='new'
     )
     
     date_of_birth = fields.Date(

@@ -5,6 +5,7 @@
         <menuitem 
             id="dental_menu_root" 
             name="Dental Care" 
+            web_icon="dental_care,static/description/icon.png"
             sequence="20"/>
 
         <!-- Menu Doctors -->

@@ -21,7 +21,17 @@ class DentalAppointment(models.Model):
         'dental.service', 
         string='Service'
     )
-    
+ 
+    state = fields.Selection(
+        string='State', 
+        selection=[
+            ('new', 'New'), 
+            ('in_progress', 'In Progress'),
+            ('done', 'Done')
+        ],
+        default='new'
+    )
+ 
     date_start = fields.Datetime(
         string='Start Date'
     )

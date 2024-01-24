@@ -16,8 +16,17 @@ class DentalDoctor(models.Model):
         'dental.service', 
         string='Service'
     )
-    
-    image = fields.Binary(
+
+    image = fields.Image(
         string='Foto',
         attachment=True                      
     )
+    
+    is_leave = fields.Boolean(
+        string="Paid Leave",
+        default=False
+    )
+    
+    def toggle_is_leave(self):
+        for doctor in self:
+            doctor.is_leave = not doctor.is_leave
