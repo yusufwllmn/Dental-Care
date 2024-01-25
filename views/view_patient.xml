@@ -6,9 +6,6 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <form>
-                    <header>
-                        <field name="state" widget="statusbar" options="{'clickable': '1'}"></field>
-                    </header>
                     <sheet>
                         <field name="image" widget="image" class="oe_avatar"></field>
                         <h1><field name="patient"></field></h1>

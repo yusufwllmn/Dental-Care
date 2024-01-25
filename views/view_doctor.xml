@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button string="Paid Leave" type="object" class="oe_highlight" name="toggle_is_leave" options="{'invisible': not context.get('is_leave')}"/>
+                        <button string="Paid Leave" type="object" class="oe_highlight" name="toggle_active" options="{'invisible': not context.get('active')}"/>
                     </header>
                     <sheet>
                         <field name="image" widget="image" class="oe_avatar"/>
@@ -16,7 +16,7 @@
                             <group>
                                 <field name="doctor"></field>
                                 <field name="service_id"></field>
-                                <field name="is_leave" readonly="1"></field>
+                                <field name="active" invisible="1"></field>
                             </group>
                         </group>
                     </sheet>
@@ -30,8 +30,10 @@
             <field name="arch" type="xml">
                 <search string="Search Doctor">
                     <field name="doctor"></field>
+                    <filter name="active" string="All Doctor" domain="['|', ('active', '=', False), ('active', '=', True)]"/>
+                    <filter name="active" string="Doctor Leave" domain="[('active', '=', False)]"/>
                     <group string="Group By">
-                        <filter name="service_id" string="Service" context="{'group_by': 'service_id'}" />
+                        <filter name="service_id" string="Service" context="{'group_by': 'service_id'}"/>
                     </group>
                 </search>
             </field>
@@ -69,9 +71,6 @@
                                     </div>
                                     <div>
                                         <field name="service_id"></field>
-                                    </div>
-                                    <div>
-                                        <field name="is_leave"></field>
                                     </div>
                                 </div>
                             </div>

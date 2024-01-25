@@ -41,7 +41,6 @@ class DentalService(models.Model):
             self -= service_rec
         self.doctor_count = 0
             
-            
     def action_view_service(self):
         return {
             'name': ('Doctors'),

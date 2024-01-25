@@ -67,7 +67,6 @@
             <field name="name">dental.appointment.calendar</field>
             <field name="model">dental.appointment</field>
             <field name="arch" type="xml">
-
                 <calendar string="Appointments" date_start="date_start" date_stop="date_end" mode="month" quick_create="0" color="state" event_open_popup="true" event_limit="5">
                     <field name="state"  filters="1"></field>
                     <field name="name"  filters="1"></field>
@@ -81,7 +80,7 @@
             <field name="name">dental.appointment.kanban</field>
             <field name="model">dental.appointment</field>
             <field name="arch" type="xml">
-                <kanban string="Kanban View" default_group_by="state" on_create="quick_create" quick_create_view="dental.patient.view_dental_appointment_form">
+                <kanban string="Kanban View" default_group_by="state" on_create="quick_create" quick_create_view="dental.patient.view_dental_appointment_form" default_fold="True">
                     <field name="name"></field>
                     <field name="doctor"></field>
                     <field name="service"></field>

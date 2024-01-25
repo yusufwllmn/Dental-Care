@@ -6,14 +6,14 @@ class DentalPatient(models.Model):
     _name = 'dental.patient'
     _description = 'Dental Patient Records'
 
-    name = fields.Many2one(
+    patient = fields.Many2one(
         'res.partner', 
         string='Patient', 
         required=True
     )
     
     emergency_number = fields.Char(
-        related='name.phone', 
+        related='patient.phone', 
         string='Emergency Number', 
         readonly=True
     )
