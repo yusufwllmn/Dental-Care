@@ -10,6 +10,7 @@
                         <button string="Paid Leave" type="object" class="oe_highlight" name="toggle_active" options="{'invisible': not context.get('active')}"/>
                     </header>
                     <sheet>
+                        <widget name="web_ribbon" title="Leave" bg_color="text-bg-danger" invisible="active"/>
                         <field name="image" widget="image" class="oe_avatar"/>
                         <h1><field name="doctor"></field></h1>
                         <group>
@@ -35,6 +36,9 @@
                     <group string="Group By">
                         <filter name="service_id" string="Service" context="{'group_by': 'service_id'}"/>
                     </group>
+                    <searchpanel>
+                        <field name="service_id" string="service" enable_counters="1" icon="fa-user-md"></field>
+                    </searchpanel>
                 </search>
             </field>
         </record>

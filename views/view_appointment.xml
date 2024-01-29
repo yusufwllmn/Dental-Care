@@ -46,6 +46,9 @@
                         <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
                         <filter name="service" string="Service" context="{'group_by': 'service'}" />
                     </group>
+                    <searchpanel>
+                        <field name="state" string="Status" enable_counters="1" icon="fa-filter"></field>
+                    </searchpanel>
                 </search>
             </field>
         </record>

@@ -51,6 +51,9 @@
                     <group string="Group By">
                         <filter name="blood_type" string="Blood Type" context="{'group_by': 'blood_type'}" />
                     </group>
+                    <searchpanel>
+                        <field name="blood_type" string="Blood Type" enable_counters="1" icon="fa-tint"></field>
+                    </searchpanel>
                 </search>
             </field>
         </record>
