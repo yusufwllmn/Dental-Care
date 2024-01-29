@@ -39,3 +39,7 @@ class DentalAppointment(models.Model):
     date_end = fields.Datetime(
         string='End Date'
     )
+    
+    def report_appointment(self):
+        report = self.env.ref("dental_care.report_appointment_details")
+        return report.report_action(self)
