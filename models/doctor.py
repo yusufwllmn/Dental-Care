@@ -6,7 +6,7 @@ class DentalDoctor(models.Model):
     _name = 'dental.doctor'
     _description = 'Dental Doctors Record'
 
-    name = fields.Many2one(
+    doctor = fields.Many2one(
         'res.partner', 
         string='Doctor', 
         required=True
@@ -16,17 +16,17 @@ class DentalDoctor(models.Model):
         'dental.service', 
         string='Service'
     )
-
+    
     image = fields.Image(
         string='Foto',
         attachment=True                      
     )
     
-    is_leave = fields.Boolean(
-        string="Paid Leave",
-        default=False
+    active = fields.Boolean(
+        string="Active",
+        default=True
     )
     
-    def toggle_is_leave(self):
+    def toggle_active(self):
         for doctor in self:
-            doctor.is_leave = not doctor.is_leave
+            doctor.active = not doctor.active

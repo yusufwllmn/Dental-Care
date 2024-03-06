@@ -15,12 +15,16 @@
     'depends': ['base'],
 
     'data': [
+        'security/ir.model.access.csv',
+        
         'views/view_service.xml',
         'views/view_doctor.xml',
         'views/view_patient.xml',
         'views/view_appointment.xml',
         'views/menu.xml',
-        'security/ir.model.access.csv'
+        
+        'report/report_appointment.xml',
+        'report/report.xml',
     ],
     
     'installable': True,

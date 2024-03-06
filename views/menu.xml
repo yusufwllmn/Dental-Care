@@ -62,7 +62,5 @@
             action="action_service" 
             parent="dental_menu_configuration" 
             sequence="20"/>
-
     </data>
-    
 </odoo>
