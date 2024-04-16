@@ -12,7 +12,7 @@
     'version': '0.1',
 
     'images': ['static/description/icon.png'],
-    'depends': ['base'],
+    'depends': ['base','contacts'],
 
     'data': [
         'security/ir.model.access.csv',

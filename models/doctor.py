@@ -6,7 +6,14 @@ class DentalDoctor(models.Model):
     _name = 'dental.doctor'
     _description = 'Dental Doctors Record'
 
-    doctor = fields.Many2one(
+    name = fields.Char(
+        related='doctor_id.name',
+        string='Doctor', 
+        required=True,
+        readonly=False
+    )
+    
+    doctor_id = fields.Many2one(
         'res.partner', 
         string='Doctor', 
         required=True
@@ -17,7 +24,7 @@ class DentalDoctor(models.Model):
         string='Service'
     )
     
-    image = fields.Image(
+    image = fields.Binary(
         string='Foto',
         attachment=True                      
     )

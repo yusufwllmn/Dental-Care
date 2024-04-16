@@ -13,9 +13,9 @@
                     <sheet>
                         <h1><field name="name"></field></h1>
                         <group>
-                            <field name="name"></field>
-                            <field name="doctor"></field>
-                            <field name="service"></field>
+                            <field name="patient_id"></field>
+                            <field name="doctor_id"></field>
+                            <field name="service_id"></field>
                         </group> 
                         <notebook>
                             <page string="Schedulling">
@@ -36,15 +36,16 @@
             <field name="arch" type="xml">
                 <search string="Search Appointment">
                     <field name="name"></field>
-                    <field name="doctor"></field>
-                    <field name="service"></field>
+                    <field name="doctor_id"></field>
+                    <field name="service_id"></field>
                     <filter name="date_start" string="Today Start Date" domain="[('date_start', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_start', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
                     <separator/>
                     <filter name="date_end" string="Today End Date" domain="[('date_end', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_end', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
                     <group string="Group By">
-                        <filter name="name" string="Patient" context="{'group_by': 'name'}" />
-                        <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
-                        <filter name="service" string="Service" context="{'group_by': 'service'}" />
+                        <filter name="name" string="Appointment" context="{'group_by': 'name'}" />
+                        <filter name="patient_id" string="Patient" context="{'group_by': 'patient_id'}" />
+                        <filter name="doctor_id" string="Doctor" context="{'group_by': 'doctor_id'}" />
+                        <filter name="service_id" string="Service" context="{'group_by': 'service_id'}" />
                     </group>
                     <searchpanel>
                         <field name="state" string="Status" enable_counters="1" icon="fa-filter"></field>
@@ -59,8 +60,9 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"></field>
-                    <field name="doctor"></field>
-                    <field name="service"></field>
+                    <field name="patient_id"></field>
+                    <field name="doctor_id"></field>
+                    <field name="service_id"></field>
                     <field name="date_start"></field>
                     <field name="date_end"></field>
                 </tree>
@@ -74,8 +76,9 @@
                 <calendar string="Appointments" date_start="date_start" date_stop="date_end" mode="month" quick_create="0" color="state" event_open_popup="true" event_limit="5">
                     <field name="state"  filters="1"></field>
                     <field name="name"  filters="1"></field>
-                    <field name="doctor"  filters="1"></field>
-                    <field name="service"  filters="1"></field>
+                    <field name="patient_id"  filters="1"></field>
+                    <field name="doctor_id"  filters="1"></field>
+                    <field name="service_id"  filters="1"></field>
                 </calendar>
             </field>
         </record>
@@ -86,8 +89,9 @@
             <field name="arch" type="xml">
                 <kanban string="Kanban View" default_group_by="state" on_create="quick_create" quick_create_view="dental.patient.view_dental_appointment_form" default_fold="True">
                     <field name="name"></field>
-                    <field name="doctor"></field>
-                    <field name="service"></field>
+                    <field name="patient_id"></field>
+                    <field name="doctor_id"></field>
+                    <field name="service_id"></field>
                     <template>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
@@ -96,10 +100,13 @@
                                         <strong><field name="name"></field></strong>
                                     </div>
                                     <div>
-                                        <field name="doctor"></field>
+                                        <field name="patient_id"></field>
                                     </div>
                                     <div>
-                                        <field name="service"></field>
+                                        <field name="doctor_id"></field>
+                                    </div>
+                                    <div>
+                                        <field name="service_id"></field>
                                     </div>
                                     <progressbar field="state" colors='{"done": "success", "in_progress": "warning", "new": "danger"}' />
                                 </div>

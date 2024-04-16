@@ -12,10 +12,10 @@
                     <sheet>
                         <widget name="web_ribbon" title="Leave" bg_color="text-bg-danger" invisible="active"/>
                         <field name="image" widget="image" class="oe_avatar"/>
-                        <h1><field name="doctor"></field></h1>
+                        <h1><field name="doctor_id"></field></h1>
                         <group>
                             <group>
-                                <field name="doctor"></field>
+                                <field name="name" readonly="1"></field>
                                 <field name="service_id"></field>
                                 <field name="active" invisible="1"></field>
                             </group>
@@ -30,7 +30,7 @@
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
                 <search string="Search Doctor">
-                    <field name="doctor"></field>
+                    <field name="name"></field>
                     <filter name="active" string="All Doctor" domain="['|', ('active', '=', False), ('active', '=', True)]"/>
                     <filter name="active" string="Doctor Leave" domain="[('active', '=', False)]"/>
                     <group string="Group By">
@@ -49,7 +49,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="image" widget="image" options="{'size': [50, 50]}"/>
-                    <field name="doctor"></field>
+                    <field name="name"></field>
                     <field name="service_id"></field>
                 </tree>
             </field>
@@ -60,7 +60,7 @@
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
                 <kanban string="Kanban View">
-                    <field name="doctor"></field>
+                    <field name="name"></field>
                     <field name="service_id"></field>
                     <field name="image"></field>
                     <template>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="oe_kanban_details">
                                     <div>
-                                        <strong><field name="doctor"></field></strong>
+                                        <strong><field name="name"></field></strong>
                                     </div>
                                     <div>
                                         <field name="service_id"></field>

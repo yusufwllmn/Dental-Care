@@ -6,18 +6,22 @@ class DentalAppointment(models.Model):
     _name = 'dental.appointment'
     _description = 'Dental Appointment Records'
 
-    name = fields.Many2one(
-        'res.partner', 
-        string='Patient', 
+    name = fields.Char( 
+        string='Appointment', 
         required=True
     )
     
-    doctor = fields.Many2one(
-        'res.partner', 
+    patient_id = fields.Many2one(
+        'dental.patient',
+        string ='Patient'
+    )
+    
+    doctor_id = fields.Many2one(
+        'dental.doctor', 
         string='Doctor'
     )
     
-    service = fields.Many2one(
+    service_id = fields.Many2one(
         'dental.service', 
         string='Service'
     )

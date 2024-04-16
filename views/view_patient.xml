@@ -8,9 +8,9 @@
                 <form>
                     <sheet>
                         <field name="image" widget="image" class="oe_avatar"></field>
-                        <h1><field name="patient"></field></h1>
+                        <h1><field name="patient_id"></field></h1>
                         <group string="PATIENT INFORMATION">
-                            <field name="patient"></field>
+                            <field name="name" readonly="1"></field>
                             <field name="emergency_number"></field>
                         </group>
                         <notebook>
@@ -47,7 +47,7 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <search string="Search Patient">
-                    <field name="patient"></field>
+                    <field name="name"></field>
                     <group string="Group By">
                         <filter name="blood_type" string="Blood Type" context="{'group_by': 'blood_type'}" />
                     </group>
@@ -64,7 +64,7 @@
             <field name="arch" type="xml">
                 <tree string="List View">
                     <field name="image" widget="image" options="{'size': [50, 50]}"></field>
-                    <field name="patient"></field>
+                    <field name="name"></field>
                     <field name="emergency_number"></field>
                     <field name="date_of_birth"></field>
                     <field name="blood_type"></field>
@@ -81,7 +81,7 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <kanban string="Kanban View">
-                    <field name="patient"></field>
+                    <field name="name"></field>
                     <field name="emergency_number"></field>
                     <field name="blood_type"></field>
                     <template>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="oe_kanban_details">
                                     <div>
-                                        <strong><field name="patient"></field></strong>
+                                        <strong><field name="name"></field></strong>
                                     </div>
                                     <div>
                                         <field name="emergency_number"></field>

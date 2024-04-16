@@ -5,20 +5,27 @@ from odoo import models, fields, api
 class DentalPatient(models.Model):
     _name = 'dental.patient'
     _description = 'Dental Patient Records'
+    
+    name = fields.Char(
+        related='patient_id.name', 
+        string='Name', 
+        required=True,
+        readonly=False
+    )
 
-    patient = fields.Many2one(
+    patient_id = fields.Many2one(
         'res.partner', 
         string='Patient', 
         required=True
     )
     
     emergency_number = fields.Char(
-        related='patient.phone', 
+        related='patient_id.phone', 
         string='Emergency Number', 
         readonly=True
     )
     
-    image = fields.Image(
+    image = fields.Binary(
         string='Foto',
         attachment=True                      
     )

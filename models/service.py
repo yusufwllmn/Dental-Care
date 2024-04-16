@@ -32,14 +32,16 @@ class DentalService(models.Model):
     
     @api.depends('doctor_ids')
     def _compute_doctor_count(self):
-        doctor_group = self.env['dental.doctor'].read_group(domain=[], fields=['service_id'], groupby=['service_id'])
-        
-        for doctor in doctor_group:
-            service_id = doctor.get('service_id')[0]
-            service_rec = self.browse(service_id)
-            service_rec.doctor_count = doctor['service_id_count']
-            self -= service_rec
-        self.doctor_count = 0
+        for record in self:
+            doctor_group = self.env['dental.doctor'].read_group([('service_id', '=', record.id)], fields=['service_id'], groupby=['service_id'])
+            for doctor in doctor_group:
+                if doctor.get('service_id'):
+                    service_id = doctor.get('service_id')[0]
+                    service_rec = self.browse(service_id)
+                    service_rec.doctor_count = doctor['service_id_count']
+                    self -= service_rec
+            if not record.doctor_ids:
+                record.doctor_count = 0
             
     def action_view_service(self):
         return {
